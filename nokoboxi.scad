@@ -4,16 +4,16 @@ $fn=80;
 width=50;
 length=70;
 height=40;
-radius=6;
+radius=7;
 thick=2;
 lid_height=5;
-lip_height=5;
+lip_height=4;
 
 module box () {
 difference(){
-  roundedcube([width,length,height],radius=radius);
+  roundedcube([width,length,height+1],radius=radius);
   translate([thick,thick,thick])
-  roundedcube([width-2*thick,length-2*thick,height-2*thick],radius=radius-thick);
+  roundedcube([width-2*thick,length-2*thick,height-2*thick+1],radius=radius-thick);
   translate([0,0,height-lid_height]) cube([width,length,lid_height+1]);
 }
 }
@@ -80,6 +80,6 @@ module test(){
     cube(40);
   }
 }
-test();
+//test();
 
-//box_full();translate([width+1,0,0]) lid_full();
+box_full();translate([width+1,0,0]) lid_full();
